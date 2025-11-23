@@ -1,6 +1,6 @@
 {
-    "name": "php-db/phpdb",
-    "description": "Database abstraction layer, SQL abstraction, result set abstraction, and RowDataGateway and TableDataGateway implementations",
+    "name": "php-db/phpdb-adapter-sql92",
+    "description": "Testing component for php-db/phpdb providing an SQL92 compliant database adapter.",
     "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
@@ -23,14 +23,14 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-        "extra": {
+    "extra": {
         "laminas": {
             "config-provider": "PhpDb\\ConfigProvider"
         }
     },
     "require": {
-        "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
-        "laminas/laminas-servicemanager": "^4.0.0",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "laminas/laminas-servicemanager": "^3.0.0 || ^4.0.0",
         "laminas/laminas-stdlib": "^3.20.0"
     },
     "require-dev": {
@@ -41,10 +41,6 @@
         "phpunit/phpunit": "^11.5.15",
         "rector/rector": "^2.0"
     },
-    "suggest": {
-        "laminas/laminas-eventmanager": "Laminas\\EventManager component",
-        "laminas/laminas-hydrator": "(^5.0.0) Laminas\\Hydrator component for using HydratingResultSets"
-    },
     "autoload": {
         "psr-4": {
             "PhpDb\\": "src/",
@@ -53,14 +49,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpDbTest\\": "test/unit/",
-            "PhpDbIntegrationTest\\": "test/integration/"
+            "PhpDbTest\\": "test/unit/"
         }
     },
     "scripts": {
         "check": [
             "@cs-check",
-            "@static-analysis"
+            "@static-analysis",
+            "@test"
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
