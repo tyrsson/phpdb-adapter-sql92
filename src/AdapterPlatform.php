@@ -14,7 +14,7 @@ class AdapterPlatform extends AbstractPlatform
 {
     public const PLATFORM_NAME = 'SQL92';
 
-    public function getSqlPlatformDecorator(): ?PlatformDecoratorInterface
+    public function getSqlPlatformDecorator(): PlatformDecoratorInterface
     {
         return new SqlPlatform();
     }
