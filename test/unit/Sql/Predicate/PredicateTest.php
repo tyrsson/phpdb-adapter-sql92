@@ -3,7 +3,7 @@
 namespace PhpDbTest\Sql\Predicate;
 
 use ErrorException;
-use PhpDb\Adapter\Platform\Sql92;
+use PhpDb\Adapter\Sql92\AdapterPlatform as Sql92;
 use PhpDb\Sql\Expression;
 use PhpDb\Sql\ExpressionInterface;
 use PhpDb\Sql\Predicate\Predicate;

@@ -2,7 +2,7 @@
 
 namespace PhpDbTest\TestAsset;
 
-use PhpDb\Adapter\Platform\Sql92;
+use PhpDb\Adapter\Sql92\AdapterPlatform as Sql92;
 
 final class TrustingSql92Platform extends Sql92
 {

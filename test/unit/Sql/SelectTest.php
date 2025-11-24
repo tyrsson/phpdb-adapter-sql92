@@ -6,7 +6,8 @@ use PhpDb\Adapter\Adapter;
 use PhpDb\Adapter\Driver\DriverInterface;
 use PhpDb\Adapter\Driver\StatementInterface;
 use PhpDb\Adapter\ParameterContainer;
-use PhpDb\Adapter\Platform\Sql92;
+use PhpDb\Adapter\Sql92\AdapterPlatform as Sql92;
+use PhpDb\ResultSet\ResultSet;
 use PhpDb\Sql\Exception\InvalidArgumentException;
 use PhpDb\Sql\Expression;
 use PhpDb\Sql\ExpressionInterface;
@@ -649,9 +650,13 @@ final class SelectTest extends TestCase
             ->method('formatParameterName')
             ->willReturnCallback(fn(string $name) => $useNamedParameters ? ':' . $name : '?');
 
+        $mockPlatform = $this->getMockBuilder(Sql92::class)
+            ->onlyMethods([])
+            ->getMock();
+
         $mockAdapter = $this->getMockBuilder(Adapter::class)
             ->onlyMethods([])
-            ->setConstructorArgs([$mockDriver])
+            ->setConstructorArgs([$mockDriver, $mockPlatform, new ResultSet()])
             ->getMock();
 
         $parameterContainer = new ParameterContainer();

@@ -7,6 +7,7 @@ use PhpDb\Adapter\Driver\ConnectionInterface;
 use PhpDb\Adapter\Driver\DriverInterface;
 use PhpDb\Adapter\Driver\ResultInterface;
 use PhpDb\Adapter\Driver\StatementInterface;
+use PhpDb\Adapter\Sql92\AdapterPlatform;
 use PhpDb\ResultSet\ResultSet;
 use PhpDb\Sql\Delete;
 use PhpDb\Sql\Insert;
@@ -42,10 +43,12 @@ final class TableGatewayTest extends TestCase
         $mockDriver->expects($this->any())->method('createStatement')->willReturn($mockStatement);
         $mockDriver->expects($this->any())->method('getConnection')->willReturn($mockConnection);
 
+        $mockAdapterPlatform = new AdapterPlatform();
+
         // setup mock adapter
         $this->mockAdapter = $this->getMockBuilder(Adapter::class)
             ->onlyMethods([])
-            ->setConstructorArgs([$mockDriver])
+            ->setConstructorArgs([$mockDriver, $mockAdapterPlatform, new ResultSet()])
             ->getMock();
     }
 

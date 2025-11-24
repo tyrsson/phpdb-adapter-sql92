@@ -5,7 +5,7 @@ namespace PhpDbTest\TableGateway\Feature;
 use PhpDb\Adapter\AdapterInterface;
 use PhpDb\Adapter\Driver\DriverInterface;
 use PhpDb\Adapter\Driver\StatementInterface;
-use PhpDb\Adapter\Platform\Sql92;
+use PhpDb\Adapter\Sql92\AdapterPlatform as Sql92;
 use PhpDb\ResultSet\ResultSet;
 use PhpDb\TableGateway\Feature\MasterSlaveFeature;
 use PhpDb\TableGateway\TableGateway;
