@@ -7,6 +7,7 @@ use PhpDb\Adapter\Driver\ConnectionInterface;
 use PhpDb\Adapter\Driver\DriverInterface;
 use PhpDb\Adapter\Driver\ResultInterface;
 use PhpDb\Adapter\Driver\StatementInterface;
+use PhpDb\Adapter\Sql92\AdapterPlatform;
 use PhpDb\ResultSet\ResultSet;
 use PhpDb\Sql;
 use PhpDb\Sql\Delete;
@@ -72,6 +73,9 @@ final class AbstractTableGatewayTest extends TestCase
         $mockDriver->expects($this->any())->method('createStatement')->willReturn($mockStatement);
         $mockDriver->expects($this->any())->method('getConnection')->willReturn($mockConnection);
 
+        $mockAdapterPlatform = new AdapterPlatform();
+
+
         $this->mockSelect = $this
             ->getMockBuilder(Select::class)
             ->onlyMethods(['where', 'getRawState'])
@@ -97,7 +101,7 @@ final class AbstractTableGatewayTest extends TestCase
 
         $this->mockAdapter = $this->getMockBuilder(Adapter::class)
             ->onlyMethods([])
-            ->setConstructorArgs([$mockDriver])
+            ->setConstructorArgs([$mockDriver, $mockAdapterPlatform, new ResultSet()])
             ->getMock();
         $this->mockSql     = $this->getMockBuilder(Sql\Sql::class)
             ->onlyMethods(['select', 'insert', 'update', 'delete'])

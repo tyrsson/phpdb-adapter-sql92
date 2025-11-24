@@ -8,7 +8,7 @@ use PhpDb\Adapter\Driver\DriverInterface;
 use PhpDb\Adapter\Driver\Pgsql\Result;
 use PhpDb\Adapter\Driver\StatementInterface;
 use PhpDb\Adapter\Platform\Postgresql;
-use PhpDb\Adapter\Platform\Sql92;
+use PhpDb\Adapter\Sql92\AdapterPlatform as Sql92;
 use PhpDb\Metadata\MetadataInterface;
 use PhpDb\Metadata\Object\ConstraintObject;
 use PhpDb\TableGateway\AbstractTableGateway;
